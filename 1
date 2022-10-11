@@ -1,0 +1,41 @@
+#include <stdio.h>
+int n,a,i;
+int main()
+{
+	while (scanf("%d",&n)!=EOF)
+	{
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&a);
+			if (a==1)
+			{
+				printf("1\n");
+			}
+			else if (a==2)
+			{
+				printf("n\n");
+			}
+			else if (a==3)
+			{
+				printf("2^n\n");
+			}
+			else if (a==4)
+			{
+				printf("n^2\n");
+			}
+			else if (a==5)
+			{
+				printf("nlogn\n");
+			}
+			else if (a==6)
+			{
+				printf("n^2\n");
+			}
+			else if (a==7)
+			{
+				printf("n^3\n");
+			}
+		}
+	}
+	return 0;
+}
