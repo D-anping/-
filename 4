@@ -1,0 +1,47 @@
+void change(int a[],int n)
+{
+	int i,j;
+	for (i=0;i<n;i++)
+	{
+		for (j=n-1;j>i;j--)
+		{
+			if (a[j]<a[j-1])
+			{
+				a[j]^=a[j-1]^=a[j]^=a[j-1];
+			}
+		}
+	}
+}
+int compare(int a[],int n,int t)
+{
+	int i,p=0;
+	for (i=0;i<n;i++)
+	{
+		if (t%a[i]!=0)
+		{
+			p++;
+		}
+	}
+	return p;
+}
+#include <stdio.h>
+int T,n,i,a[100],t;
+int main()
+{
+	while (scanf("%d",&T)!=EOF)
+	{
+		scanf("%d",&n);
+		for (i=0;i<n;i++)
+		{
+			scanf("%d",&a[i]);
+		}
+		change(a,n);
+		t=a[n-1];
+		while(compare(a,n,t)!=0)
+		{
+			t++;
+		}
+		printf("%d\n",t);
+	}
+	return 0;
+}
