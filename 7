@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <math.h>
+int n,a,i,b;
+double d;
+int main()
+{
+	while (scanf("%d",&n)!=EOF)
+	{
+		while (n--)
+		{
+			scanf("%d",&a);
+			for (i=1;i<=10000;i++)
+			{
+				d=sqrt(a*i*i+1);
+				b=sqrt(a*i*i+1);
+				if (d==b)
+				{
+					printf("%d\n",i);
+					break;
+				}
+			}
+			if (i==10001)
+			{
+				printf("No\n");
+			}
+		}
+	}
+	return 0;
+}
