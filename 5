@@ -1,0 +1,30 @@
+#include <stdio.h>
+#include <math.h>
+int n,a,b,c,x,t;
+int main()
+{
+	while (scanf("%d",&n)!=EOF)
+	{
+		while (n--)
+		{
+			scanf("%d %d %d",&a,&b,&c);
+			if (a<=1000 && b<=1000 && c<=1000)
+			{
+				t=0;
+				for (x=1;-a*x+c>=0;x++)
+				{
+					if ((-a*x+c)%b==0 && (-a*x+c)/b!=0)
+					{
+						printf("%d %d\n",x,(-a*x+c)/b);
+						t++;
+					}
+				}
+				if (t==0)
+				{
+					printf("No\n");
+				}
+			}
+		}
+	}
+	return 0;
+}
