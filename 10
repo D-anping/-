@@ -1,0 +1,24 @@
+#include <stdio.h>
+int n,a[10000],i,j;
+int main()
+{
+	scanf("%d",&n);
+	for (i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	int t=0;
+	for (i=0;i<n;i++)
+	{
+		for (j=n-1;j>i;j--)
+		{
+			if (a[j]<a[j-1])
+			{
+				a[j]^=a[j-1]^=a[j]^=a[j-1];
+				t++;
+			}
+		}
+	}
+	printf("%d\n",t);
+	return 0;
+}
