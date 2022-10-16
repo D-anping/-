@@ -1,0 +1,14 @@
+#include <stdio.h>
+int main()
+{
+	int n, p, i;
+	long long a[600];
+	scanf_s("%d %d",&n,&p);
+	a[p]=2*p;
+	for (i=p+1;i<=n;i++)
+	{
+		a[i]=a[i-1]+i;
+	}
+	printf("%lld\n",a[n]);
+	return 0;
+}
