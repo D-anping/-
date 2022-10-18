@@ -1,0 +1,13 @@
+#include <stdio.h>
+int n,t,i,p;
+int main()
+{
+	scanf("%d %d",&n,&p);
+	t=p*2;
+	for (i=p+1;i<=n;i++)
+	{
+		t+=i;
+	}
+	printf("%d\n",t);
+	return 0;
+}
