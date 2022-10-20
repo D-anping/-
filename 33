@@ -1,0 +1,43 @@
+#include <stdio.h>
+long long x[30];//上车人数
+long long y[30];//下车人数
+long long z[30];//车上的人数
+int a,n,m,t,i,p,l;//车上的人数
+int main()
+{
+	scanf("%d %d %d %d",&a,&n,&m,&t);
+	if (t<4)
+	{
+		z[1]=z[2]=a;
+		z[3]=2*a;
+		printf("%lld\n",z[t]);
+		return 0;
+	}
+	for (p=0;p<=a;p++)
+	{
+		x[1]=a;
+		x[2]=p;
+		y[2]=p;
+		z[1]=z[2]=a;
+		for (i=3;i<n;i++)
+		{
+			x[i]=x[i-1]+x[i-2];
+			y[i]=x[i-1];
+			z[i]=z[i-1]+x[i]-y[i];
+		}
+		if (z[n-1]-m==0)
+		{
+			printf("%lld\n",z[t]);
+			break;
+		}
+		else
+		{
+			l++;
+		}
+	}
+	if (l==a+1)
+	{
+		printf("No answer.\n");
+	}
+	return 0;
+}
