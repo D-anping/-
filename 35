@@ -1,0 +1,23 @@
+#include <stdio.h>
+int n,a[1001],b[1001],i;
+int main()
+{
+	scanf("%d",&n);
+	a[1]=9;
+	b[1]=1;
+	for (i=2;i<=n;i++)
+	{
+		if (i==n)
+		{
+			a[i]=(a[i-1]*8+b[i-1])%12345;
+			b[i]=(b[i-1]*8+a[i-1])%12345;
+		}
+		else
+		{
+			a[i]=(a[i-1]*9+b[i-1])%12345;
+			b[i]=(b[i-1]*9+a[i-1])%12345;
+		}
+	}
+	printf("%d\n",a[n]);
+	return 0;
+}
