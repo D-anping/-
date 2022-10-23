@@ -1,0 +1,24 @@
+#include <stdio.h>
+double a,b,r,pi,area;
+int n,year,i;
+int main()
+{
+	scanf("%d",&n);
+	pi=3.1415926;
+	i=1;
+	while (n--)
+	{
+		scanf("%lf %lf",&a,&b);
+		r=a*a+b*b;
+		area=pi*r/2.0;
+		year=(int)area/50.0;
+		if (area/50.0>year)
+		{
+			year++;
+		}
+		printf("Property %d: This property will begin eroding in year %d.\n",i,year);
+		i++;
+	}
+	printf("END OF OUTPUT.\n");
+	return 0;
+}
