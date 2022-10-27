@@ -1,0 +1,15 @@
+#include <stdio.h>
+int a,b,*p1=&a,*p2=&b;
+int main()
+{
+	scanf("%d %d",p1,p2);
+	if (*p1 > *p2)
+	{
+		printf("%d\n",*p1*3);
+	}
+	else
+	{
+		printf("%d\n",*p2*3);
+	}
+	return 0;
+}
