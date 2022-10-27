@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <malloc.h>
+int *p=NULL,n,i;
+int main()
+{
+	scanf_s("%d",&n);
+	p=(int*)malloc(sizeof(int)*n);
+	for (i=0;i<n;i++)
+	{
+		scanf_s("%d",p+i);
+	}
+	for (i=n-1;i>=0;i--)
+	{
+		printf("%d\n",*(p+i));
+	}
+	free(p);
+	return 0;
+}
