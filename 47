@@ -1,0 +1,67 @@
+#include <iostream>
+#include <stdio.h>
+#include <malloc.h>
+struct MyStruct
+{
+	long long num;
+	int score;
+	struct MyStruct* next;
+}*p, * head, * last, * q;
+int T, n, score, i;
+long long num;
+int main()
+{
+	scanf("%d", &T);
+	while (T--)
+	{
+		scanf("%d", &n);
+		if (n == 1)
+		{
+			scanf("%lld %d", &num, &score);
+			p = (MyStruct*)malloc(1);
+			p->num = num;
+			p->score = score;
+			p->next = NULL;
+			if (head == NULL)
+			{
+				head = p;
+				last = head;
+			}
+			else
+			{
+				last->next = p;
+				last = p;
+			}
+			for (p = head; (p->next) != NULL; p = p->next)
+			{
+				for (q = p->next; q != NULL; q = q->next)
+				{
+					if ((q->num) < (p->num))
+					{
+						int cj = q->score;
+						long long xh = q->num;
+						q->score = p->score;
+						p->score = cj;
+						q->num = p->num;
+						p->num = xh;
+					}
+				}
+			}
+		}
+		else
+		{
+			scanf("%d", &n);
+			i = 0;
+			for (p = head; p != NULL; p = p->next)
+			{
+				i++;
+				if (i == n)
+				{
+					printf("%d\n", p->score);
+					break;
+				}
+			}
+		}
+	}
+	return 0;
+}
