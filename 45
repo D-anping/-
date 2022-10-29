@@ -1,0 +1,51 @@
+#include <iostream>
+#include <malloc.h>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+struct node
+{
+	int num;
+	int score;
+	struct node *next;//一个链式结构
+};
+int main()
+{
+	struct node *head,*tail,*p;//还有哪些要定义
+	int num,i=0,score,t,j;
+	char c[20];
+	float sum=0,f;
+	head=tail=NULL;//初始化为多少？
+	scanf("%d",&num);
+	while (num!=-1)
+	{
+		i++;
+		scanf("%s%d",c,&score);
+		sum+=score;
+		p=(node*)malloc(1);//如何申请内存
+		p->num=num;
+		p->score=score;
+		p->next=NULL;
+		if (head==NULL)//当没有结点时，也就是head指向空时
+		{
+			head=p;//应当把head指向头结点
+			tail=head;
+		}
+		else
+		{
+			tail->next=p;
+			tail=p;//否则应当把尾巴结点指向新建结点
+		}
+		scanf("%d",&num);
+	}
+	f=sum/i;
+	for (p=head;p!=NULL;p=p->next)
+	{
+		if ((p->score)>f)
+		{
+			printf("%d %d\n",p->num,p->score);//cout<<p->num<<endl;  cout输出可能会超时
+		}
+	}
+	free(p);
+	return 0;
+}
