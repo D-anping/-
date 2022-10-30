@@ -1,0 +1,25 @@
+#include <stdio.h>
+#include <algorithm>
+using namespace std;
+int n,k,i,a[10000],t;
+int main()
+{
+	scanf("%d %d",&n,&k);
+	for (i=0;i<n;i++)
+	{
+		scanf("%d",&a[i]);
+	}
+	sort(a,a+n);
+	for (i=n-1;i>0;i--)
+	{
+		a[i-1]=(a[i-1]+a[i])/k;
+		t=i-1;
+		while (a[t]<a[t-1] && t>=1)
+		{
+			a[t]^=a[t-1]^=a[t]^=a[t-1];
+			t--;
+		}
+	}
+	printf("%d\n",a[0]);
+	return 0;
+}
