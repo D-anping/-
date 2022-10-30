@@ -1,0 +1,62 @@
+struct club
+{
+	int a;
+	int b;
+}c[1000],t;
+#include <stdio.h>
+int n,i,j;
+int main()
+{
+	scanf_s("%d",&n);
+	for (i=0;i<n;i++)
+	{
+		scanf_s("%d %d",&c[i].a,&c[i].b);
+	}
+	for (i=0;i<n;i++)
+	{
+		for (j=n-1;j>i;j--)
+		{
+			if (c[j].a>c[j-1].a)
+			{
+				t=c[j];
+				c[j]=c[j-1];
+				c[j-1]=t;
+			}
+			if (c[j].a==c[j-1].a && c[j].b>c[j-1].b)
+			{
+				t=c[j];
+				c[j]=c[j-1];
+				c[j-1]=t;
+			}
+		}
+	}
+	int k=0;
+	t.a=-1;
+	t.b=-1;
+	for (i=0;i<n-1;i++)
+	{
+		while (c[i].a==-1 && i<n)
+		{
+			i++;
+		}
+		for (j=i+1;j<n;j++)
+		{
+			if (j==i+1)
+			{
+				k++;
+			}
+			while (c[j].a==-1 && j<n)
+			{
+				j++;
+			}
+			if (c[i].b>c[j].b)
+			{
+				c[i]=c[j];
+				c[j]=t;
+			}
+		}
+        c[i]=t;
+	}
+	printf("%d\n",k);
+	return 0;
+}
