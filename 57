@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <string.h>
+char ch[240], c[240];
+int n, t, i, j;
+int main()
+{
+	scanf("%s", ch);
+	strcpy(c, ch);
+	scanf("%d", &n);
+	t = strlen(ch);
+	for (i = 0; i < t; i++)
+	{
+		for (j = t - 1; j > i; j--)
+		{
+			if (ch[j] < ch[j - 1])
+			{
+				ch[j] ^= ch[j - 1] ^= ch[j] ^= ch[j - 1];
+			}
+		}
+	}
+	int p = 0, l = 0;
+	for (i = 0; i < t; i++)
+	{
+		if (c[i] <= ch[t - n + l - 1])
+		{
+			if (c[i] != '0')
+			{
+				p++;
+			}
+			if (c[i] == '0' && p == 0)
+			{
+				l++;
+			}
+			else
+			{
+				break;
+			}
+		}
+	}
+	p = 0;
+	if ((t - n) == 1 && ch[0] == '0')
+	{
+		printf("%c", ch[0]);
+	}
+	else
+	{
+		for (i = 0; i < t; i++)
+		{
+			if (c[i] <= ch[t - n + l - 1])
+			{
+				if (c[i] != '0')
+				{
+					printf("%c", c[i]);
+					p++;
+				}
+				if (c[i] == '0' && p != 0)
+				{
+					printf("%c", c[i]);
+					p++;
+				}
+				if (p == t - n)
+				{
+					break;
+				}
+			}
+		}
+	}
+	printf("\n");
+	return 0;
+}
