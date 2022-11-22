@@ -1,0 +1,46 @@
+struct bag
+{
+	int w;
+	int c;
+	float s;
+}t[40],p;
+#include <stdio.h>
+int n,m,i,j;
+int main()
+{
+	scanf_s("%d %d",&m,&n);
+	for (i=0;i<n;i++)
+	{
+		scanf_s("%d %d",&t[i].w,&t[i].c);
+		t[i].s=(float)t[i].c/t[i].w;
+	}
+	for (i=0;i<n;i++)
+	{
+		for (j=n-1;j>i;j--)
+		{
+			if (t[j].s>t[j-1].s || (t[j].s==t[j-1].s && t[j].w<t[j-1].w))
+			{
+				p=t[j];
+				t[j]=t[j-1];
+				t[j-1]=p;
+			}
+		}
+	}
+	i=0;
+	int sum=0;
+	while (m>0)
+	{
+		if (m-t[i].w>=0)
+		{
+			m-=t[i].w;
+			sum+=t[i].c;
+		}
+		i++;
+		if (i==n)
+		{
+			break;
+		}
+	}
+	printf("%d\n",sum);
+	return 0;
+}
